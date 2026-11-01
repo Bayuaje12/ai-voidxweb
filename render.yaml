@@ -1,17 +1,15 @@
 services:
   - type: web
-    name: x-void-ai-web
+    name: x-void-ai-gemini
     runtime: node
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /api/health
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
-      - key: OPENAI_API_KEY
+      - key: GEMINI_API_KEY
         sync: false
-      - key: OPENAI_REALTIME_MODEL
-        value: gpt-realtime-2.1-mini
-      - key: OPENAI_REALTIME_VOICE
-        value: marin
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash-lite

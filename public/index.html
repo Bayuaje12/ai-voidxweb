@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#090811">
-  <meta name="description" content="X-VOID AI — asisten suara realtime dengan karakter futuristik.">
+  <meta name="description" content="X-VOID AI — asisten suara dengan karakter futuristik.">
   <title>X-VOID AI — Neural Interface</title>
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/expressions.js" defer></script>
@@ -15,11 +15,10 @@
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
   <main class="app-shell">
     <header class="topbar">
-      <a class="brand" href="/" aria-label="X-VOID AI beranda"><span class="brand-mark">X</span><span><b>X-VOID</b><small>NEURAL INTERFACE <i>V1.0</i></small></span></a>
+      <a class="brand" href="/" aria-label="X-VOID AI beranda"><span class="brand-mark">X</span><span><b>X-VOID</b><small>NEURAL INTERFACE <i>V2.0 GEMINI</i></small></span></a>
       <div class="top-status"><span class="status-dot"></span><span id="connectionLabel">SYSTEM STANDBY</span></div>
       <button class="icon-button" id="clearBtn" title="Hapus percakapan" aria-label="Hapus percakapan">⌫</button>
     </header>
-
     <section class="main-grid">
       <section class="character-panel panel">
         <div class="panel-kicker"><span>01 / AVATAR CORE</span><span class="live-chip" id="moodLabel">NEUTRAL</span></div>
@@ -53,22 +52,25 @@
           <div class="scanline"></div>
           <div class="avatar-caption"><span class="pulse-ring"></span><span id="avatarState">AWAITING INPUT</span></div>
         </div>
-        <div class="character-info"><div><h1>X-VOID</h1><p>YOUR PERSONAL NEURAL ASSISTANT</p></div><span class="version">V.01</span></div>
-        <div class="mood-legend"><span><i class="legend-dot purple"></i> Adaptive emotion</span><span><i class="legend-dot blue"></i> Live voice core</span></div>
+        <div class="character-info"><div><h1>X-VOID</h1><p>YOUR PERSONAL NEURAL ASSISTANT</p></div><span class="version">V.02</span></div>
+        <div class="mood-legend"><span><i class="legend-dot purple"></i> Adaptive emotion</span><span><i class="legend-dot blue"></i> Gemini voice core</span></div>
       </section>
-
       <section class="conversation-panel panel">
-        <div class="panel-kicker"><span>02 / LIVE SESSION</span><span class="secure-label">● ENCRYPTED TRANSPORT</span></div>
-        <div class="conversation-head"><div><h2>Neural Link</h2><p>Obrolan langsung dengan X-VOID.</p></div><div class="session-badge" id="sessionBadge">OFFLINE</div></div>
+        <div class="panel-kicker"><span>02 / LIVE SESSION</span><span class="secure-label">● GEMINI NEURAL CORE</span></div>
+        <div class="conversation-head"><div><h2>Neural Link</h2><p>Obrolan suara dan teks dengan X-VOID.</p></div><div class="session-badge" id="sessionBadge">OFFLINE</div></div>
         <div class="messages" id="messages" aria-live="polite">
-          <div class="welcome-message" id="welcomeMessage"><div class="welcome-symbol">⌁</div><h3>Link belum tersambung.</h3><p>Tekan tombol mulai. Izinkan mikrofon, lalu bicara seperti biasa. Gue dengerin.</p><div class="suggestions"><button class="suggestion" data-prompt="Perkenalkan dirimu.">Perkenalkan dirimu</button><button class="suggestion" data-prompt="Apa yang bisa kamu bantu?">Apa yang bisa kamu bantu?</button></div></div>
+          <div class="welcome-message" id="welcomeMessage"><div class="welcome-symbol">⌁</div><h3>Link belum tersambung.</h3><p>Tekan tombol mulai untuk bicara, atau ketik pesanmu. Gue dengerin.</p><div class="suggestions"><button class="suggestion" data-prompt="Perkenalkan dirimu.">Perkenalkan dirimu</button><button class="suggestion" data-prompt="Apa yang bisa kamu bantu?">Apa yang bisa kamu bantu?</button></div></div>
         </div>
         <div class="transcript-hint" id="transcriptHint">TRANSKRIP AKAN MUNCUL DI SINI</div>
+        <form class="text-controls" id="chatForm">
+          <input id="textInput" type="text" maxlength="4000" autocomplete="off" placeholder="Ketik pesan untuk X-VOID..." aria-label="Pesan">
+          <button type="submit" id="sendBtn" aria-label="Kirim pesan">➤</button>
+        </form>
         <div class="voice-controls">
-          <button class="start-button" id="startBtn"><span class="mic-icon">◉</span><span><b>Mulai percakapan</b><small>AKTIFKAN MIKROFON</small></span><span class="button-arrow">↗</span></button>
-          <button class="end-button" id="endBtn" disabled aria-label="Akhiri percakapan">■</button>
+          <button class="start-button" id="startBtn"><span class="mic-icon">◉</span><span><b>Mulai bicara</b><small>AKTIFKAN MIKROFON</small></span><span class="button-arrow">↗</span></button>
+          <button class="end-button" id="endBtn" disabled aria-label="Hentikan mikrofon">■</button>
         </div>
-        <div class="manual-row"><span id="activityText">Sistem siap menerima koneksi.</span><span class="latency-label">REALTIME / WEBRTC</span></div>
+        <div class="manual-row"><span id="activityText">Sistem siap menerima pesan.</span><span class="latency-label">GEMINI / WEB SPEECH</span></div>
       </section>
     </section>
     <footer><span>© 2026 X-VOID AI <i>—</i> PERSONAL NEURAL INTERFACE</span><span>BUILT FOR THE VOID <b>✦</b></span></footer>

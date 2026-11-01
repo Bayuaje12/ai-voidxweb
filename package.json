@@ -1,11 +1,17 @@
 {
-  "name": "x-void-ai-web",
-  "version": "1.0.0",
+  "name": "x-void-ai-gemini",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "X-VOID AI realtime voice assistant web app",
-  "scripts": {"start": "node src/server.js", "dev": "node --watch src/server.js", "check": "node --check src/server.js && node --check src/routes/realtime.js && node --check public/js/app.js && node --check public/js/realtime.js && node --check public/js/expressions.js"},
-  "engines": {"node": ">=20"},
+  "description": "X-VOID AI web assistant powered by Gemini Free Tier and browser speech APIs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "check": "node --check src/server.js && node --check src/routes/chat.js && node --check public/js/app.js && node --check public/js/realtime.js && node --check public/js/expressions.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
