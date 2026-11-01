@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090811">
+  <meta name="description" content="X-VOID AI — asisten suara realtime dengan karakter futuristik.">
+  <title>X-VOID AI — Neural Interface</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/expressions.js" defer></script>
+  <script src="/js/realtime.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="X-VOID AI beranda"><span class="brand-mark">X</span><span><b>X-VOID</b><small>NEURAL INTERFACE <i>V1.0</i></small></span></a>
+      <div class="top-status"><span class="status-dot"></span><span id="connectionLabel">SYSTEM STANDBY</span></div>
+      <button class="icon-button" id="clearBtn" title="Hapus percakapan" aria-label="Hapus percakapan">⌫</button>
+    </header>
+
+    <section class="main-grid">
+      <section class="character-panel panel">
+        <div class="panel-kicker"><span>01 / AVATAR CORE</span><span class="live-chip" id="moodLabel">NEUTRAL</span></div>
+        <div class="avatar-stage" id="avatarStage">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="avatar-glow"></div>
+          <div class="avatar" id="avatar" data-expression="neutral" aria-label="Karakter X-VOID berekspresi netral">
+            <svg viewBox="0 0 300 340" role="img" aria-label="Avatar anime futuristik X-VOID">
+              <defs>
+                <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6d9ff"/><stop offset=".48" stop-color="#9270df"/><stop offset="1" stop-color="#34245f"/></linearGradient>
+                <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe1df"/><stop offset="1" stop-color="#d59cae"/></linearGradient>
+                <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29243e"/><stop offset="1" stop-color="#090912"/></linearGradient>
+                <filter id="eyeGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <path class="back-hair" d="M66 143Q39 36 143 22Q252 4 252 137L276 261 229 232 211 302 82 300 73 238 32 265Z" fill="#493478" stroke="#a78bfa" stroke-width="3"/>
+              <path d="M78 116Q78 49 149 43Q225 43 229 124L215 213Q202 260 151 265Q98 256 83 210Z" fill="url(#skin)"/>
+              <path class="fringe" d="M74 132Q54 42 145 31Q230 26 238 115Q207 87 187 82Q170 125 137 132Q110 137 91 119L86 172 68 192Z" fill="url(#hair)" stroke="#c9b6ff" stroke-width="2"/>
+              <path d="M80 159Q58 139 64 187Q68 211 89 207M221 157Q244 138 237 189Q232 212 215 207" fill="none" stroke="#b89cff" stroke-width="9" stroke-linecap="round"/>
+              <path d="M95 151Q116 139 133 151M170 151Q190 139 207 151" fill="none" stroke="#6f4c78" stroke-width="5" stroke-linecap="round" class="brows"/>
+              <g class="eyes" filter="url(#eyeGlow)"><path class="eye-shape left-eye" d="M96 171Q115 154 137 171Q119 190 98 179Z" fill="#171327"/><path class="eye-shape right-eye" d="M164 171Q185 154 205 171Q185 190 165 179Z" fill="#171327"/><ellipse class="pupil" cx="119" cy="173" rx="5" ry="8" fill="#d7baff"/><ellipse class="pupil" cx="185" cy="173" rx="5" ry="8" fill="#d7baff"/><path d="M100 172Q117 162 134 171M168 171Q186 162 202 171" fill="none" stroke="#c9a8ff" stroke-width="2"/></g>
+              <path d="M148 179L143 205 153 207" fill="none" stroke="#b77f91" stroke-width="2" stroke-linecap="round"/>
+              <path class="mouth" d="M132 225Q150 230 168 225" fill="none" stroke="#9d526e" stroke-width="3" stroke-linecap="round"/>
+              <path d="M117 252L111 276 150 312 190 276 182 252" fill="url(#skin)"/>
+              <path d="M52 340Q56 280 112 269L150 309 190 269Q244 281 250 340Z" fill="url(#coat)" stroke="#8162c9" stroke-width="3"/>
+              <path d="M112 270L150 309 190 270 177 340H123Z" fill="#171226" stroke="#a78bfa" stroke-width="2"/>
+              <path d="M149 310L150 340" stroke="#9c7aff" stroke-width="3"/><path d="M63 315L91 300M237 315L209 300" stroke="#4c3a75" stroke-width="5"/>
+              <path d="M84 99Q61 179 81 238M218 95Q244 175 219 240" fill="none" stroke="#d6c7ff" stroke-width="2" opacity=".7"/>
+              <circle cx="229" cy="231" r="5" fill="#b79aff"/><path d="M229 236V256" stroke="#b79aff" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="scanline"></div>
+          <div class="avatar-caption"><span class="pulse-ring"></span><span id="avatarState">AWAITING INPUT</span></div>
+        </div>
+        <div class="character-info"><div><h1>X-VOID</h1><p>YOUR PERSONAL NEURAL ASSISTANT</p></div><span class="version">V.01</span></div>
+        <div class="mood-legend"><span><i class="legend-dot purple"></i> Adaptive emotion</span><span><i class="legend-dot blue"></i> Live voice core</span></div>
+      </section>
+
+      <section class="conversation-panel panel">
+        <div class="panel-kicker"><span>02 / LIVE SESSION</span><span class="secure-label">● ENCRYPTED TRANSPORT</span></div>
+        <div class="conversation-head"><div><h2>Neural Link</h2><p>Obrolan langsung dengan X-VOID.</p></div><div class="session-badge" id="sessionBadge">OFFLINE</div></div>
+        <div class="messages" id="messages" aria-live="polite">
+          <div class="welcome-message" id="welcomeMessage"><div class="welcome-symbol">⌁</div><h3>Link belum tersambung.</h3><p>Tekan tombol mulai. Izinkan mikrofon, lalu bicara seperti biasa. Gue dengerin.</p><div class="suggestions"><button class="suggestion" data-prompt="Perkenalkan dirimu.">Perkenalkan dirimu</button><button class="suggestion" data-prompt="Apa yang bisa kamu bantu?">Apa yang bisa kamu bantu?</button></div></div>
+        </div>
+        <div class="transcript-hint" id="transcriptHint">TRANSKRIP AKAN MUNCUL DI SINI</div>
+        <div class="voice-controls">
+          <button class="start-button" id="startBtn"><span class="mic-icon">◉</span><span><b>Mulai percakapan</b><small>AKTIFKAN MIKROFON</small></span><span class="button-arrow">↗</span></button>
+          <button class="end-button" id="endBtn" disabled aria-label="Akhiri percakapan">■</button>
+        </div>
+        <div class="manual-row"><span id="activityText">Sistem siap menerima koneksi.</span><span class="latency-label">REALTIME / WEBRTC</span></div>
+      </section>
+    </section>
+    <footer><span>© 2026 X-VOID AI <i>—</i> PERSONAL NEURAL INTERFACE</span><span>BUILT FOR THE VOID <b>✦</b></span></footer>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>

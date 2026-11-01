@@ -1,0 +1,74 @@
+#!/bin/bash
+
+clear
+echo "=========================================="
+echo "      GITHUB AUTO TOOL BY TERMUX          "
+echo "=========================================="
+echo "1. Buat Repository Baru & Langsung Upload"
+echo "2. Upload ke Repository yang Sudah Ada"
+echo "3. Lihat Daftar Repository Saya"
+echo "=========================================="
+read -p "Pilih menu (1-3): " pilihan
+
+case $pilihan in
+  1)
+    echo ""
+    read -p "Masukkan nama repository baru: " repo_name
+    read -p "Deskripsi repository (boleh dikosongkan): " repo_desc
+    read -p "Pilih tipe (public/private) [default: public]: " repo_vis
+    repo_vis=${repo_vis:-public}
+
+    # Inisialisasi Git lokal
+    git init >/dev/null 2>&1
+    git branch -M main
+    git add .
+    
+    read -p "Masukkan pesan commit: " commit_msg
+    commit_msg=${commit_msg:-"Initial commit"}
+    git commit -m "$commit_msg" >/dev/null 2>&1
+
+    echo "Sedang membuat repository baru di GitHub..."
+    gh repo create "$repo_name" --$repo_vis --description "$repo_desc" --source=. --remote=origin --push
+    
+    if [ $? -eq 0 ]; then
+      echo "✅ Berhasil! Repository '$repo_name' berhasil dibuat dan file berhasil di-upload."
+    else
+      echo "❌ Gagal membuat repository. Periksa kembali nama atau koneksi Anda."
+    fi
+    ;;
+    
+  2)
+    echo ""
+    read -p "Masukkan URL repository GitHub tujuan: " repo_url
+    
+    git init >/dev/null 2>&1
+    git branch -M main
+    git remote remove origin 2>/dev/null
+    git remote add origin "$repo_url"
+    git add .
+    
+    read -p "Masukkan pesan commit: " commit_msg
+    commit_msg=${commit_msg:-"Update file"}
+    git commit -m "$commit_msg" >/dev/null 2>&1
+
+    echo "Sedang mengunggah file ke repository..."
+    git push -u origin main
+    
+    if [ $? -eq 0 ]; then
+      echo "✅ Berhasil mengunggah pembaruan ke repository!"
+    else
+      echo "❌ Gagal push. Coba jalankan 'git pull origin main --rebase' terlebih dahulu jika ada perbedaan file."
+    fi
+    ;;
+    
+  3)
+    echo ""
+    echo "Daftar Repository GitHub Anda:"
+    echo "----------------------------------------"
+    gh repo list --limit 20
+    ;;
+    
+  *)
+    echo "❌ Pilihan tidak valid! Jalankan ulang script."
+    ;;
+esac
